@@ -1,0 +1,18 @@
+"Samsung": {
+	"Samsung QM43C": {width : "39  9/16", height: "22 12/16"},
+	"Samsung QM50C": {width : "45 14/16", height: "26  5/16"},
+	"Samsung QM55C": {width : "50  8/16", height: "28 15/16"},
+	"Samsung QM65C": {width : "59  7/16", height: "33 15/16"},
+	"Samsung QM75C": {width : "68 11/16", height: "39  3/16"},
+	"Samsung QM85C": {width : "77 12/16", height: "44  5/16"}
+	},
+	
+"LG": {
+	"LG-43UH5J-H": {width : "39  5/16", height: "23  3/16"},
+	"LG-49UH5J-H": {width : "44 13/16", height: "26  5/16"},
+	"LG-55UH5J-H": {width : "50  6/16", height: "29  7/16"},
+	"LG-65UH5J-H": {width : "59  5/16", height: "34  7/16"},
+	"LG-75UH5J-H": {width : "68 11/16", height: "39  3/16"},
+	"LG-86UH5J-H": {width : "78 10/16", height: "44 13/16"},
+	"LG-98UH5J-H": {width : "89  7/16", height: "50 14/16"}
+	}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Dimension Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        select, .dimension-display {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .dimension-display {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Know Your Display Dimension</h1>
+    
+    <div class="form-group">
+        <label for="brand">Select Display Brand:</label>
+        <select id="brand" onchange="updateModelOptions()">
+            <option value="">--Choose a Brand--</option>
+            <option value="Samsung">Samsung</option>
+            <option value="LG">LG</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="model">Select Model:</label>
+        <select id="model" onchange="showDimensions()">
+            <option value="">--Choose a Model--</option>
+        </select>
+    </div>
+
+    <div class="dimension-display" id="dimensions">
+        Select a TV brand and model to see the dimensions.
+    </div>
+</div>
+
+<script>
+    const tvData = {
+        "Samsung": {
+	"Samsung QM43C": {width : "39  9/16", height: "22 12/16"},
+	"Samsung QM50C": {width : "45 14/16", height: "26  5/16"},
+	"Samsung QM55C": {width : "50  8/16", height: "28 15/16"},
+	"Samsung QM65C": {width : "59  7/16", height: "33 15/16"},
+	"Samsung QM75C": {width : "68 11/16", height: "39  3/16"},
+	"Samsung QM85C": {width : "77 12/16", height: "44  5/16"}
+	},
+	
+        "LG": {
+	"LG-43UH5J-H": {width : "39  5/16", height: "23  3/16"},
+	"LG-49UH5J-H": {width : "44 13/16", height: "26  5/16"},
+	"LG-55UH5J-H": {width : "50  6/16", height: "29  7/16"},
+	"LG-65UH5J-H": {width : "59  5/16", height: "34  7/16"},
+	"LG-75UH5J-H": {width : "68 11/16", height: "39  3/16"},
+	"LG-86UH5J-H": {width : "78 10/16", height: "44 13/16"},
+	"LG-98UH5J-H": {width : "89  7/16", height: "50 14/16"}
+	}
+    };
+
+    function updateModelOptions() {
+        const brand = document.getElementById('brand').value;
+        const modelSelect = document.getElementById('model');
+        modelSelect.innerHTML = '<option value="">--Choose a Model--</option>';  // Clear previous options
+
+        if (brand) {
+            const models = Object.keys(tvData[brand]);
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model;
+                modelSelect.appendChild(option);
+            });
+        }
+    }
+
+    function showDimensions() {
+        const brand = document.getElementById('brand').value;
+        const model = document.getElementById('model').value;
+        const dimensionDisplay = document.getElementById('dimensions');
+
+        if (brand && model) {
+            const dimensions = tvData[brand][model];
+            dimensionDisplay.innerHTML = `Dimensions: <br>
+                                        Width: ${dimensions.width} <br>
+                                        Height: ${dimensions.height}`;
+                                        
+        } else {
+            dimensionDisplay.innerHTML = "Select a TV brand and model to see the dimensions.";
+        }
+    }
+</script>
+
+</body>
+</html>
